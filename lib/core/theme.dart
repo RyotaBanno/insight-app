@@ -3,10 +3,9 @@ import 'colors.dart';
 
 ThemeData buildInsightTheme() {
   final base = ThemeData.light(useMaterial3: true);
+  final textTheme = base.textTheme.apply(fontFamily: 'Roboto');
 
   return base.copyWith(
-    useMaterial3: true,
-    fontFamily: 'Roboto',
     scaffoldBackgroundColor: InsightColors.background,
     colorScheme: base.colorScheme.copyWith(
       primary: InsightColors.primary,
@@ -30,40 +29,41 @@ ThemeData buildInsightTheme() {
         fontWeight: FontWeight.w700,
         color: InsightColors.textPrimary,
         letterSpacing: -0.2,
+        fontFamily: 'Roboto',
       ),
     ),
-    textTheme: base.textTheme.copyWith(
-      headlineSmall: const TextStyle(
+    textTheme: textTheme.copyWith(
+      headlineSmall: textTheme.headlineSmall?.copyWith(
         fontSize: 22,
         fontWeight: FontWeight.w700,
         color: InsightColors.textPrimary,
         letterSpacing: -0.2,
       ),
-      titleMedium: const TextStyle(
+      titleMedium: textTheme.titleMedium?.copyWith(
         fontSize: 16,
         fontWeight: FontWeight.w600,
         color: InsightColors.textPrimary,
         height: 1.32,
       ),
-      bodyLarge: const TextStyle(
+      bodyLarge: textTheme.bodyLarge?.copyWith(
         fontSize: 15,
         fontWeight: FontWeight.w500,
         color: InsightColors.textPrimary,
         height: 1.5,
       ),
-      bodyMedium: const TextStyle(
+      bodyMedium: textTheme.bodyMedium?.copyWith(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: InsightColors.textSecondary,
         height: 1.5,
       ),
-      bodySmall: const TextStyle(
+      bodySmall: textTheme.bodySmall?.copyWith(
         fontSize: 12,
         fontWeight: FontWeight.w500,
         color: InsightColors.textMuted,
         height: 1.4,
       ),
-      labelSmall: const TextStyle(
+      labelSmall: textTheme.labelSmall?.copyWith(
         fontSize: 11,
         fontWeight: FontWeight.w600,
         color: InsightColors.textSecondary,

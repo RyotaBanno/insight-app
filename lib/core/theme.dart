@@ -1,151 +1,111 @@
 import 'package:flutter/material.dart';
-
-/// アプリ全体のカラーパレット（仮デザイン用）
-class InsightColors {
-  // メインのアクセントカラー（成長イメージの明るいグリーン）
-  static const Color primary = Color(0xFF2ECC71);
-
-  // 画面全体の背景（薄いグレー）
-  static const Color bg = Color(0xFFF7F8FA);
-
-  // カードの背景
-  static const Color cardBg = Colors.white;
-
-  // テキスト色
-  static const Color textMain = Color(0xFF1A1A1A);
-  static const Color textSub = Color(0xFF667085);
-
-  // 枠線などに使う非常に薄いグレー
-  static const Color border = Color(0xFFE5E7EB);
-}
+import 'colors.dart';
 
 ThemeData buildInsightTheme() {
-  final base = ThemeData.light();
+  final base = ThemeData.light(useMaterial3: true);
+  final textTheme = base.textTheme.apply(fontFamily: 'Roboto');
 
   return base.copyWith(
-    // 画面全体の背景
-    scaffoldBackgroundColor: InsightColors.bg,
-
-    // カラースキーム
+    scaffoldBackgroundColor: InsightColors.background,
     colorScheme: base.colorScheme.copyWith(
       primary: InsightColors.primary,
-      secondary: InsightColors.primary,
-      surface: InsightColors.cardBg,
-      background: InsightColors.bg,
+      secondary: InsightColors.secondary,
+      surface: InsightColors.surface,
+      background: InsightColors.background,
+      outline: InsightColors.border,
       brightness: Brightness.light,
     ),
-
-    // AppBarを「白いカード＋薄い影」っぽくする
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
-      elevation: 0.8,
-      shadowColor: Colors.black12,
+      backgroundColor: InsightColors.surface,
+      elevation: 0,
+      scrolledUnderElevation: 0,
       surfaceTintColor: Colors.transparent,
-      foregroundColor: InsightColors.textMain,
+      toolbarHeight: 64,
+      titleSpacing: 0,
       centerTitle: false,
+      foregroundColor: InsightColors.textPrimary,
       titleTextStyle: TextStyle(
-        color: InsightColors.textMain,
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-      ),
-      iconTheme: IconThemeData(
-        color: InsightColors.textMain,
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        color: InsightColors.textPrimary,
+        letterSpacing: -0.2,
+        fontFamily: 'Roboto',
       ),
     ),
-
-    // CTAボタン（ログイン、投稿する 等）
+    textTheme: textTheme.copyWith(
+      headlineSmall: textTheme.headlineSmall?.copyWith(
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        color: InsightColors.textPrimary,
+        letterSpacing: -0.2,
+      ),
+      titleMedium: textTheme.titleMedium?.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: InsightColors.textPrimary,
+        height: 1.32,
+      ),
+      bodyLarge: textTheme.bodyLarge?.copyWith(
+        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        color: InsightColors.textPrimary,
+        height: 1.5,
+      ),
+      bodyMedium: textTheme.bodyMedium?.copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: InsightColors.textSecondary,
+        height: 1.5,
+      ),
+      bodySmall: textTheme.bodySmall?.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: InsightColors.textMuted,
+        height: 1.4,
+      ),
+      labelSmall: textTheme.labelSmall?.copyWith(
+        fontSize: 11,
+        fontWeight: FontWeight.w600,
+        color: InsightColors.textSecondary,
+        letterSpacing: 0.2,
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: InsightColors.primary,
-        foregroundColor: Colors.white,
+        foregroundColor: InsightColors.textPrimary,
         textStyle: const TextStyle(
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
           fontSize: 16,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(20),
         ),
-        minimumSize: const Size.fromHeight(48),
-        elevation: 2,
-        shadowColor: Colors.black26,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       ),
     ),
-
-    // TextFieldスタイル（白いボックス+角丸+枠線）
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.white,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 12,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: InsightColors.border,
-          width: 1,
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: InsightColors.border,
-          width: 1,
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(
-          color: InsightColors.primary,
-          width: 2,
-        ),
-      ),
+    chipTheme: base.chipTheme.copyWith(
+      backgroundColor: InsightColors.chipBackground,
+      selectedColor: InsightColors.textPrimary,
+      secondarySelectedColor: InsightColors.primary,
       labelStyle: const TextStyle(
-        color: InsightColors.textSub,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
-      hintStyle: const TextStyle(
-        color: InsightColors.textSub,
-        fontSize: 14,
-      ),
-    ),
-
-    // テキストスタイル
-    textTheme: base.textTheme.copyWith(
-      bodyLarge: const TextStyle(
-        color: InsightColors.textMain,
-        fontSize: 16,
-        height: 1.5,
-      ),
-      bodyMedium: const TextStyle(
-        color: InsightColors.textMain,
-        fontSize: 14,
-        height: 1.5,
-      ),
-      bodySmall: const TextStyle(
-        color: InsightColors.textSub,
-        fontSize: 12,
-        height: 1.4,
-      ),
-      titleMedium: const TextStyle(
-        color: InsightColors.textMain,
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: FontWeight.w600,
-        height: 1.4,
+        color: InsightColors.textSecondary,
       ),
-      headlineSmall: const TextStyle(
-        color: InsightColors.textMain,
-        fontSize: 20,
+      secondaryLabelStyle: const TextStyle(
+        fontSize: 13,
         fontWeight: FontWeight.w600,
-        height: 1.4,
+        color: Colors.white,
       ),
+      shape: const StadiumBorder(),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     ),
-
-    // Fab（右下のアクションボタン等）
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: InsightColors.primary,
-      foregroundColor: Colors.white,
+    dividerTheme: const DividerThemeData(
+      color: InsightColors.border,
+      thickness: 1,
+      space: 32,
     ),
   );
 }

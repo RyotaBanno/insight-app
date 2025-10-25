@@ -1,30 +1,42 @@
 import 'package:flutter/material.dart';
 
-/// アプリ全体で使うカラーパレット。
-/// Figmaの見た目に近づけるための仮定色なので、あとで数値は調整OK。
+/// INSIGHT アプリ全体で使用するブランドカラー定義。
 class InsightColors {
-  /// 画面全体の背景色（すこし明るいグレーっぽい）
-  static const Color background = Color(0xFFF7F8FA);
+  InsightColors._();
 
-  /// カード背景の白
-  static const Color cardBg = Colors.white;
+  /// スクリーンの基調となる背景色。
+  static const Color background = Color(0xFFF7F9FB);
 
-  /// カードなどの枠線・ボーダーに使う薄いグレー
-  static const Color border = Color(0xFFE5E7EB);
+  /// タイムラインカードなどのサーフェスカラー。
+  static const Color surface = Colors.white;
 
-  /// メインテキスト（ほぼ黒に近い濃いグレー）
-  static const Color textMain = Color(0xFF1A1A1A);
+  /// サーフェスを浮かせるときの淡い背景。
+  static const Color surfaceVariant = Color(0xFFF0F4F7);
 
-  /// サブテキスト（説明文などのグレー）
-  static const Color textSub = Color(0xFF667085);
+  /// ブランドのメインカラー（アクセントグリーン）。
+  static const Color primary = Color(0xFF74EE46);
 
-  /// プロフィールアイコンなどで使っていた黄緑のアクセント
-  /// ※Figmaの右上「I」が入った丸い背景のイメージ
-  static const Color primary = Color(0xFFCEFF33);
+  /// サブアクセント（淡いイエローグリーン）。
+  static const Color secondary = Color(0xFFC7FF34);
 
-  /// 「練習記録」セクションの薄い水色背景
-  static const Color lightSectionBg = Color(0xFFEFF7FF);
+  /// エレメントの境界線に使う薄いグレー。
+  static const Color border = Color(0xFFE1E7EF);
 
-  /// 強度バッジ（赤い pill の背景）
-  static const Color intensityRed = Color(0xFFE53935);
+  /// メインテキストカラー。
+  static const Color textPrimary = Color(0xFF1B1F24);
+
+  /// セカンダリテキストカラー。
+  static const Color textSecondary = Color(0xFF5B6470);
+
+  /// 補足ラベルなどに使うミュートカラー。
+  static const Color textMuted = Color(0xFFA6AFBD);
+
+  /// 練習セクションの背景カラー。
+  static const Color practiceBackground = Color(0xFFE6F4FF);
+
+  /// 強度バッジのテキストに合わせるディープカラー。
+  static const Color intensity = Color(0xFFE53935);
+
+  /// グレードフィルタの非選択時背景。
+  static const Color chipBackground = Color(0xFFEFF3F8);
 }
